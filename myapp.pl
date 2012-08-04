@@ -71,16 +71,15 @@ __DATA__
     <h1>ORLite with Mojolicious::Lite</h1>
     <p><%= scalar localtime %></p>
   </div>
+  <%= form_for '/' => (method => 'post') => begin %>
+  <%= input_tag 'msg', 'type' => 'text', class => 'span6', autofocus => 'autofocus', placeholder => '今何してる？' %>
+  <%= submit_button '投稿する', (class => 'btn') %>
+  <% end %>
   <ul>
   % foreach my $entry (@{$entries}) {
     <li><%= $entry->msg %></li>
   % }
   </ul>
-  <p>今何してる？</p>
-  <%= form_for '/' => (method => 'post') => begin %>
-  <%= input_tag 'msg', 'type' => 'text' %>
-  <%= submit_button '投稿する' %>
-  <% end %>
 </div>
 
 @@ layouts/default.html.ep
