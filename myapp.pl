@@ -71,10 +71,10 @@ __DATA__
     <h1>ORLite with Mojolicious::Lite</h1>
     <p><%= scalar localtime %></p>
   </div>
-  <%= form_for '/' => (method => 'post') => begin %>
-  <%= input_tag 'msg', 'type' => 'text', class => 'span6', autofocus => 'autofocus', placeholder => '今何してる？' %>
-  <%= submit_button '投稿する', (class => 'btn') %>
-  <% end %>
+  %= form_for '/' => (method => 'post', class => 'form-inline') => begin
+    %= input_tag 'msg', 'type' => 'text', class => 'span6', autofocus => 'autofocus', placeholder => '今何してる？'
+    %= submit_button '投稿する', (class => 'btn')
+  % end
   <ul>
   % foreach my $entry (@{$entries}) {
     <li><%= $entry->msg %></li>
@@ -88,11 +88,11 @@ __DATA__
 <head>
   <meta charset="<%= app->renderer->encoding %>">
   <title><%= title %></title>
-  %= stylesheet '/tb/css/bootstrap.min.css'
-  %= stylesheet '/tb/css/bootstrap-responsive.min.css'
+  %= stylesheet '/tb/docs/assets/css/bootstrap.css'
+  %= stylesheet '/tb/docs/assets/css/bootstrap-responsive.css'
   %= stylesheet '/css/app.css'
   %= javascript '/js/jquery.js'
-  %= javascript '/tb/js/bootstrap.min.js'
+  %= javascript '/tb/docs/assets/js/bootstrap.min.js'
   %= javascript '/js/app.js'
 </head>
 <body>
