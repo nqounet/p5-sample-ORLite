@@ -37,7 +37,7 @@
         <p>Current Time : {{now}}</p>
         <input type="text" v-model="msg" v-on="keyup:submit|key enter" autofocus placeholder="今何してる？">
         <ul>
-            <li v-repeat="entries">{{content}}</li>
+            <li v-repeat="entries">{{msg}}</li>
         </ul>
         <pre>data: {{$data}}</pre>
     </div>

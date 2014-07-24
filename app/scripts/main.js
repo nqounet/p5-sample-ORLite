@@ -15,8 +15,10 @@ var main = new Vue({
                 body: {
                     msg: $data.msg
                 }
-            }).done(function() {
+            }).done(function(json) {
                 $data.msg = '';
+                console.debug('json:', json);
+                $data.entries = json.entries;
             });
         }
     }
