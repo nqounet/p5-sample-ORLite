@@ -16,26 +16,8 @@ use ORLite {
     );
     return 1;
   },
+  unicode => 1,
 };
-
-{
-  # ORLiteのutf8対応
-  my $connect = sub {
-    DBI->connect(
-      $_[0]->dsn,
-      undef,
-      undef,
-      {
-        PrintError => 0,
-        RaiseError => 1,
-        ShowErrorStatement => 1,
-        sqlite_unicode => 1,
-      },
-    );
-  };
-  no warnings 'redefine';
-  *connect = $connect;# オーバーライド
-}
 
 package main;
 use Mojolicious::Lite;
@@ -47,9 +29,7 @@ app->secrets( b(__FILE__)->md5_sum )
 
 app->static->paths(['app']);
 
-get '/' => sub  {
-  shift->redirect_to('index.html');
-};
+under '/api/v1';
 
 get '/entries' => sub {
   my $self = shift;

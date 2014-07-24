@@ -2,7 +2,10 @@
   "name": "p5-sample-orlite",
   "private": true,
   "dependencies": {
-    "jquery": "~1.11.0"
+    "vue": "~0.10.5",
+    "moment": "~2.7.0",
+    "knacss": "~3.0.5",
+    "oboe": "~1.15.1"
   },
   "devDependencies": {}
 }

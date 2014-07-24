@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width">
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-
+    <link rel="stylesheet" href="../bower_components/knacss/css/knacss.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -18,21 +18,38 @@
 
 <body>
 
-    <div class="hero-unit">
+    <header id="header" role="banner" class="line pam">
         <h1>ORLite with Mojolicious::Lite</h1>
-        <p>{{now}}</p>
+    </header>
+    <aside class="mod left w20 mrs pam aside">
+        <nav id="navigation" role="navigation">
+            <ul class="pam">
+                <li class="pam">Top</li>
+                <li class="pam">Main</li>
+                <li class="pam">Sub</li>
+                <li class="pam">Sub</li>
+                <li class="pam">Sub</li>
+            </ul>
+        </nav>
+    </aside>
+    <div id="main" role="main" class="mod pam">
+        <h1>{{title}}</h1>
+        <p>Current Time : {{now}}</p>
+        <input type="text" v-model="msg" v-on="keyup:submit|key enter" autofocus placeholder="今何してる？">
+        <ul>
+            <li v-repeat="entries">{{content}}</li>
+        </ul>
+        <pre>data: {{$data}}</pre>
     </div>
-    <input type="text" id="msg" autofocus placeholder="今何してる？">
-    <input type="submit" value="投稿する">{{#entries}}
-    <ul>
-        {{#entry}}
-        <li>{{entry}}</li>{{/entry}}
-    </ul>
-    {{/entries}}
+    <footer id="footer" role="contentinfo" class="line pam txtcenter">
+        @nqounet
+    </footer>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/vue/dist/vue.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+    <script src="../bower_components/oboe/dist/oboe-browser.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
