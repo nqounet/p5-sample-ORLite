@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-#ｕｔｆ８
 use utf8;
 
 package Model;
@@ -24,7 +23,7 @@ use Mojolicious::Lite;
 use Mojo::ByteStream qw(b);
 use JSON::XS qw(decode_json);
 
-app->secrets( b(__FILE__)->md5_sum )->log->level('debug')
+app->secrets( b(__FILE__)->sha1_sum )->log->level('debug')
     ->debug( app->secrets );
 
 app->static->paths( ['app'] );
