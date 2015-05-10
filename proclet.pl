@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use utf8;
-use 5.010;
+use strict;
+use warnings;
 use Proclet::Declare;
 
 env();
