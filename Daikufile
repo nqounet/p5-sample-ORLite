@@ -1,0 +1,21 @@
+use lib 'lib';
+use Path::Tiny qw(path);
+use Capture::Tiny qw(capture_stdout);
+use App::scan_prereqs_cpanfile;
+
+desc 'install perl modules';
+task install => sub {
+    sh q(cpanm --with-recommends --with-develop --with-all-features --installdeps .);
+};
+
+namespace generate => sub {
+    desc 'generate cpanfile';
+    task cpanfile => sub {
+        my $stdout = capture_stdout sub {
+            sh q(scan-prereqs-cpanfile --ignore=app,bower_components,node_modules,test,public,templates,var);
+        };
+        path('cpanfile')->spew($stdout);
+    };
+};
+
+task default => sub { sh q{daiku -T} };
