@@ -1,4 +1,5 @@
 requires 'JSON::XS';
-requires 'Mojolicious';
+requires 'Mojo::ByteStream';
+requires 'Mojolicious::Lite';
 requires 'ORLite';
 requires 'Proclet::Declare';
